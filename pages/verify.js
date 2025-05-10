@@ -6,18 +6,20 @@ export default function VerifyPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const type = params.get('type');
+    const token = params.get('access_token');
 
-    if (type === 'signup') {
+    if (token) {
+      // Anggap verifikasi berhasil jika ada access_token haha
       router.replace('/success');
-    } else if (type === 'recovery') {
-      router.replace('/reset-password');
+    } else {
+      // Kalau tidak ada, fallback ke halaman utama
+      router.replace('/');
     }
   }, []);
 
   return (
     <div style={{ padding: 40, textAlign: 'center' }}>
-      <h2>🔄 Memproses verifikasi...</h2>
+      <h2>🔄 Memproses verifikasi akun...</h2>
       <p>Mohon tunggu sebentar.</p>
     </div>
   );
