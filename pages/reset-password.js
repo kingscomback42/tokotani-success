@@ -20,7 +20,7 @@ export default function ResetPasswordPage() {
     const { error } = await supabase.auth.updateUser({ password });
 
     if (error) setMessage(`Gagal: ${error.message}`);
-    else setMessage('✅ Berhasil ubah password');
+    else setMessage('Berhasil ubah password');
     setLoading(false);
   };
 
