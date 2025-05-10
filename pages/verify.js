@@ -6,18 +6,22 @@ export default function VerifyPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const token = params.get('access_token');
+    const code = params.get('code'); // kode dari Supabase
+    const type = params.get('type'); // bisa 'recovery' atau 'signup'
 
-    if (token) {
-      router.replace('/success');
-    } else {
-      router.replace('/');
+    // Jika ada code atau access_token, kita anggap sukses
+    if (code) {
+      if (type === 'recovery') {
+        router.replace('/reset-password?code=' + code);
+      } else {
+        router.replace('/success');
+      }
     }
   }, []);
 
   return (
     <div style={{ padding: 40, textAlign: 'center' }}>
-      <h2>🔄 Verifikasi akun...</h2>
+      <h2>🔄 Memproses verifikasi akun...</h2>
       <p>Mohon tunggu sebentar.</p>
     </div>
   );
