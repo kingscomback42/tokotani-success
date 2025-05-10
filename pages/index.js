@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-export default function HomeRedirectPage() {
+export default function IndexRedirectHandler() {
   const router = useRouter();
   const { type } = router.query;
 
@@ -14,9 +14,9 @@ export default function HomeRedirectPage() {
   }, [type]);
 
   return (
-    <div style={{ padding: 40, textAlign: 'center' }}>
-      <h2>Mengalihkan...</h2>
-      <p>Mohon tunggu sebentar...</p>
+    <div style={{ textAlign: 'center', padding: '40px' }}>
+      <h2>🔄 Mengalihkan...</h2>
+      <p>Silakan tunggu sebentar.</p>
     </div>
   );
 }
