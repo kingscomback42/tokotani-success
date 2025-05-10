@@ -3,16 +3,20 @@ import { useRouter } from 'next/router';
 
 export default function HomeRedirectPage() {
   const router = useRouter();
+  const { type } = router.query;
 
   useEffect(() => {
-    const { type } = router.query;
-
-    if (type === 'recovery') {
-      router.replace('/reset-password');
-    } else if (type === 'signup') {
+    if (type === 'signup') {
       router.replace('/success');
+    } else if (type === 'recovery') {
+      router.replace('/reset-password');
     }
-  }, [router.query]);
+  }, [type]);
 
-  return <div>Redirecting...</div>;
+  return (
+    <div style={{ padding: 40, textAlign: 'center' }}>
+      <h2>Mengalihkan...</h2>
+      <p>Mohon tunggu sebentar...</p>
+    </div>
+  );
 }
